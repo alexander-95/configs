@@ -1,10 +1,6 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
-;(require 'highlight-current-line)
-;(highlight-current-line-on t)
-;(set-face-background 'highlight-current-line-face "dark green")
-
 (global-hl-line-mode 1)
  
 ;; To customize the background color
@@ -22,14 +18,3 @@ ARG, show only buffers that are visiting files."
 
 (define-key ctl-x-map "\C-b" 'my-list-buffers)
 (global-set-key (kbd "<f5>") (lambda () (interactive) (shell) (rename-uniquely)))
-
-;custom themes
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;(load-theme 'monokai t)
-
-
-(global-set-key (kbd "C-c <left>")  'windmove-left)
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>")    'windmove-up)
-(global-set-key (kbd "C-c <down>")  'windmove-down)
-(load (concat term-file-prefix (getenv "TERM")))
