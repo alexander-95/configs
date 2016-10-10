@@ -18,3 +18,10 @@ ARG, show only buffers that are visiting files."
 
 (define-key ctl-x-map "\C-b" 'my-list-buffers)
 (global-set-key (kbd "<f5>") (lambda () (interactive) (shell) (rename-uniquely)))
+
+(setq comint-prompt-read-only t)
+
+(defun my-comint-preoutput-turn-buffer-read-only (text)
+  (propertize text 'read-only t))
+
+(add-hook 'comint-preoutput-filter-functions 'my-comint-preoutput-turn-buffer-read-only)
