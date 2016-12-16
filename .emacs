@@ -1,3 +1,4 @@
+;;shift direction to change between buffers
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
@@ -5,7 +6,6 @@
  
 ;; To customize the background color
 (set-face-background 'hl-line "#010")
-
 
 ;;allows opening new shells with unique names using f5
 (defun my-list-buffers (&optional arg)
@@ -18,6 +18,7 @@ ARG, show only buffers that are visiting files."
   (interactive "P")
   (switch-to-buffer (list-buffers-noselect arg)))
 
+;;press f5 for new terminal
 (define-key ctl-x-map "\C-b" 'my-list-buffers)
 (global-set-key (kbd "<f5>") (lambda () (interactive) (shell) (rename-uniquely)))
 
