@@ -3,6 +3,7 @@ function link
 {
     ln .emacs ~/.emacs
     ln .bashrc ~/.bashrc
+    ln .tmux.conf ~/.tmux.conf
 }
 
 function jre
@@ -37,8 +38,7 @@ function colorscheme
     #gsettings set org.pantheon.terminal.settings follow-last-tab "true"
 }
 
-colorscheme
-
+link
 
 
 #palette #75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2AA198:#f9f8f5:#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2AA198:#f8f8f2
