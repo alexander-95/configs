@@ -2,8 +2,15 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+;;highlight current line, disable for term buffers
 (global-hl-line-mode 1)
- 
+(add-hook 'eshell-mode-hook (lambda ()
+			      (setq-local global-hl-line-mode
+					  nil)))
+(add-hook 'term-mode-hook (lambda ()
+			    (setq-local global-hl-line-mode
+					nil)))
+
 ;; To customize the background color
 (set-face-background 'hl-line "#010")
 
