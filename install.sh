@@ -31,14 +31,15 @@ function jre
 
 function colorscheme
 {
-    gsettings set org.pantheon.terminal.settings palette "#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2AA198:#f9f8f5:#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2AA198:#f8f8f2"
+    monokai="#75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2AA198:#f9f8f5:#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2AA198:#f8f8f2"
+    gsettings set org.pantheon.terminal.settings palette $monokai
     gsettings set org.pantheon.terminal.settings foreground "#94a3a5"
     gsettings set org.pantheon.terminal.settings background "rgba(0,0,0,0.85)"
     gsettings set org.pantheon.terminal.settings cursor-color "#839496"
     #gsettings set org.pantheon.terminal.settings follow-last-tab "true"
 }
 
-link
+colorscheme
 
 
 #palette #75715e:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2AA198:#f9f8f5:#272822:#f92672:#a6e22e:#f4bf75:#66d9ef:#ae81ff:#2AA198:#f8f8f2
