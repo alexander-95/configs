@@ -1,6 +1,10 @@
 ;;shift direction to change between buffers
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
+(global-set-key "\M-[1;2A" 'windmove-up)
+(global-set-key "\M-[1;2B" 'windmove-down)
+(global-set-key "\M-[1;2C" 'windmove-right)
+(global-set-key "\M-[1;2D" 'windmove-left)
 
 ;;highlight current line, disable for term buffers
 (global-hl-line-mode 1)
@@ -29,7 +33,6 @@ ARG, show only buffers that are visiting files."
 (define-key ctl-x-map "\C-b" 'my-list-buffers)
 (global-set-key (kbd "<f5>") (lambda () (interactive) (shell) (rename-uniquely)))
 
-
 ;;read-only shells
 (setq comint-prompt-read-only t)
 
@@ -38,15 +41,14 @@ ARG, show only buffers that are visiting files."
 
 (add-hook 'comint-preoutput-filter-functions 'my-comint-preoutput-turn-buffer-read-only)
 
-
 ;;highlight frame of current buffer
 (set-face-attribute  'mode-line
 		     nil
-		     :foreground "gray80"
+		     :foreground "yellow"
 		     :background "gray25"
 		     :box '(:line-width 1 :style released-button))
 (set-face-attribute  'mode-line-inactive
 		     nil
-		     :foreground "gray30"
+		     :foreground "white"
 		     :background "black"
 		     :box '(:line-width 1 :style released-button))
