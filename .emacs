@@ -32,6 +32,8 @@ ARG, show only buffers that are visiting files."
 ;;press f5 for new terminal
 (define-key ctl-x-map "\C-b" 'my-list-buffers)
 (global-set-key (kbd "<f5>") (lambda () (interactive) (shell) (rename-uniquely)))
+(global-set-key (kbd "<f6>") (lambda () (interactive) (term "/bin/bash") (rename-uniquely)))
+(global-set-key (kbd "<f7>") (lambda () (interactive) (ansi-term "/bin/bash") (rename-uniquely)))
 
 ;;read-only shells
 (setq comint-prompt-read-only t)
