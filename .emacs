@@ -54,3 +54,7 @@ ARG, show only buffers that are visiting files."
 		     :foreground "white"
 		     :background "black"
 		     :box '(:line-width 1 :style released-button))
+
+;;scroll 1 line at a time instead of default half a page
+(setq scroll-step 1
+      scroll-conservatively 10000)
