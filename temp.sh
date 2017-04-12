@@ -2,16 +2,6 @@
 #temp source for cpu cores /sys/devices/platform/coretemp.0/hwmon/hwmon*/
 #useful for disk usage: /sys/block/sda/stat
 #useful for getting fan speed http://www.tjansson.dk/2008/10/controlling-fanspeeds-in-linux-on-pwm-motherboards-thinkpads-and-asus-eee-pc/
-output=""
-thermal_zones=$(ls -1a /sys/class/thermal/ | grep thermal_zone)
-for zone in $thermal_zones
-do
-    temp=$(cat /sys/class/thermal/$zone/temp)
-    temp=$(($temp/1000))
-    output=$output$temp"°c "
-done
-echo "$output"
-
 
 coretemp=0
 for cpu in $(ls -1 /sys/devices/platform/ | grep coretemp)
@@ -25,7 +15,6 @@ do
 	temp=$(($(cat ${sensor}_input)/1000))
 	if [[ "$label" == "Core"* ]]
 	then
-	    echo "$label $temp°c"
 	    if [ $temp -gt $coretemp ]
 	    then
 		coretemp=$temp
@@ -33,4 +22,8 @@ do
 	fi
     done
 done
-echo "cpu: $coretemp°c"
+
+#fan speed
+fan=$(cat /sys/class/hwmon/hwmon1/device/fan1_input)
+
+echo -e '\U1F321 cpu:' $coretemp°c '\U2744' ${fan}rpm
