@@ -30,13 +30,17 @@ symbol = "AAPL"
 buy = 0
 amount = 0
 sell = getStockPrice(symbol)
-diff = sell - buy
-diff*=amount
+gain = sell - buy
+gain*=amount
+gain = str(gain)
 
 stock, change = getStockAndChange(symbol)
 output = symbol+": $"+stock
 if change[0] is '+':
-    output += "#[fg=green] "+change+" #[fg=white]"
-else: output += "#[fg=red] "+change+" #[fg=white]"
+    output += "#[fg=green] "+change+"#[fg=white]"
+else: output += "#[fg=red] "+change+"#[fg=white]"
+if gain > 0:
+    output += "#[fg=green] "+gain+"#[fg=white]"
+else: output += "#[fg=red] "+gain+"#[fg=white]"
 print output
 
