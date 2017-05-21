@@ -1,6 +1,9 @@
 #!/bin/bash
 
-netstats=/sys/class/net/enp0s25/statistics
+#currently used interface for connecting to the internet
+intf=$(route | grep default | awk '{print $8}')
+
+netstats=/sys/class/net/$intf/statistics
 
 units=(b kb mb gb tb)
 i=0
