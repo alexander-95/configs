@@ -23,7 +23,13 @@ do
     done
 done
 
-#fan speed
-fan=$(cat /sys/class/hwmon/hwmon1/device/fan1_input)
+for hwmon in $(ls -1 /sys/class/hwmon/)
+do
+    name=$(cat /sys/class/hwmon/$hwmon/name)
+    if [ $name != 'acpitz' ] && [ $name != 'coretemp' ]
+    then
+	fan=$(cat /sys/class/hwmon/$hwmon/fan1_input)
+    fi
+done
 
-echo -e '\U1F321 cpu:' $coretemp°c '\U2744' ${fan}rpm
+echo -e '#[fg=red]\U1F321#[fg=default] cpu:' $coretemp°c '#[fg=blue]\U2744#[fg=default]' ${fan}rpm
