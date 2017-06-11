@@ -1,7 +1,24 @@
 #!/bin/bash
 
 #currently used interface for connecting to the internet
-intf=$(route | grep default | awk '{print $8}')
+meds=($(route | grep default | awk '{print $5}'))
+intfs=($(route | grep default | awk '{print $8}'))
+
+#we could have multiple default routes, so we'll use the one
+#with the lowest med value
+min_med=${meds[0]}
+i=0
+j=0
+for med in ${meds[@]}
+do
+    if [ $med -lt $min_med ]
+    then
+	min_med=$med
+	j=$i
+    fi
+    i=$(($i+1))
+done
+intf=${intfs[j]}
 
 netstats=/sys/class/net/$intf/statistics
 
