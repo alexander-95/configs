@@ -56,7 +56,7 @@ done
 
 while [ $tx -gt 1024 ]
 do
-    tx=$(($tx /1024))
+    tx=$(($tx / 1024))
     j=$(($j + 1))
 done
 
