@@ -58,3 +58,13 @@ ARG, show only buffers that are visiting files."
 ;;scroll 1 line at a time instead of default half a page
 (setq scroll-step 1
       scroll-conservatively 10000)
+
+;;tabs to spaces
+(setq-default indent-tabs-mode nil)
+
+;;proper indentation for c-style languages
+(setq c-default-style "bsd")
+(setq c-basic-offset 4)
+
+;;gid
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp")) (autoload 'gid "idutils" nil t)
