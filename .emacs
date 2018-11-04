@@ -17,7 +17,7 @@
 
 ;; To customize the background color
 (set-face-background 'hl-line "#000")
-(set-face-foreground 'hl-line "#FFF")
+(set-face-foreground 'highlight nil)
 
 ;; allows opening new shells with unique names using f5
 (defun my-list-buffers (&optional arg)
