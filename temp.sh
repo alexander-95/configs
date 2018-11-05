@@ -4,6 +4,8 @@
 #useful for getting fan speed http://www.tjansson.dk/2008/10/controlling-fanspeeds-in-linux-on-pwm-motherboards-thinkpads-and-asus-eee-pc/
 
 coretemp=0
+
+# intel temperature compatibility
 for cpu in $(ls -1 /sys/devices/platform/ | grep coretemp)
 do
     hwmon=$(ls -1 /sys/devices/platform/$cpu/hwmon/ | grep hwmon)
@@ -15,12 +17,23 @@ do
 	temp=$(($(cat ${sensor}_input)/1000))
 	if [[ "$label" == "Core"* ]]
 	then
+            # get the temperature of the hottest core
 	    if [ $temp -gt $coretemp ]
 	    then
 		coretemp=$temp
 	    fi
 	fi
     done
+done
+
+# amd temperature compatibility
+for hwmon in $(ls -1 /sys/class/hwmon/)
+do
+    name=$(cat /sys/class/hwmon/$hwmon/name)
+    if [ $name == 'k10temp' ]
+    then
+        coretemp=$(($(cat /sys/class/hwmon/$hwmon/temp1_input)/1000))
+    fi
 done
 
 for hwmon in $(ls -1 /sys/class/hwmon/)
