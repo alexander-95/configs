@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# requires net-tools
+# sudo apt install net-tools
+
 #currently used interface for connecting to the internet
 meds=($(route | grep default | awk '{print $5}'))
 intfs=($(route | grep default | awk '{print $8}'))
